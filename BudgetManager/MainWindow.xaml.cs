@@ -13,10 +13,7 @@ namespace BudgetManager
         public MainWindow()
         {
             InitializeComponent();
-            using (var context = new BudgetContext())
-            {
-                var kazkas = context.TransactionCategories.FirstOrDefault(z => z.TransactionType == ETransactionType.Expense);
-            }
+
         }
     }
 }

@@ -51,12 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Interfaces\ICRUDRepository.cs" />
+    <Compile Include="Services\TransactionManager.cs" />
+    <Compile Include="Services\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetManager.DL\BudgetManager.DL.csproj">
+      <Project>{03731495-f6e9-4069-bb45-5f8332009fed}</Project>
+      <Name>BudgetManager.DL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
