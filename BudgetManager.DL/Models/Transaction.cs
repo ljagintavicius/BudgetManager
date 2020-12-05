@@ -19,6 +19,6 @@ namespace BudgetManager.DL.Models
         public int UserId { get; set; }
         public User User { get; set; }
         public DateTime TransactionDate { get; set; }
-        public decimal Amount { get; set; }
+        public decimal Sum { get; set; }
     }
 }
