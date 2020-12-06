@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="150">
     <StackPanel Orientation="Vertical">
-        <Button Height="50" Margin="10 10 10 10" Content="Login" FontSize="20" Click="Button_Click"></Button>
+        <Button x:Name="btnLogin" Height="50" Margin="10 10 10 10" Content="Login" FontSize="20" Click="btnLogin_Click"></Button>
     </StackPanel>
 </UserControl>

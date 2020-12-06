@@ -25,9 +25,11 @@ namespace BudgetManager
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            
         }
     }
 }

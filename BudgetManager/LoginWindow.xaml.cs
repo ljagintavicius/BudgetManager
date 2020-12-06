@@ -21,12 +21,37 @@ namespace BudgetManager
     /// </summary>
     public partial class LoginWindow : Window
     {
-        private readonly List<User> _usersList;
+        private List<User> _usersList;
+        private readonly ICRUDRepository<User> _userManager;
+        
         public LoginWindow()
         {
             InitializeComponent();
-            ICRUDRepository<User> userManager = new UserManager();
-            _usersList = userManager.GetAll();
+            _userManager = new UserManager();
+            //_usersList = _userManager.GetAll();
+            //cmbUserList.ItemsSource = _usersList.Select(z => z.Name);
         }
+
+
+
+        private void btnNewUserCreate_Click(object sender, RoutedEventArgs e)
+        {
+            _userManager.Add(new User { Name = txtNewUser.Text });
+            MessageBox.Show($"User {txtNewUser.Text} created");
+            txtNewUser.Text = string.Empty;
+        }
+
+
+        private void cmbUserList_DropDown(object sender, EventArgs e)
+        {
+            _usersList = _userManager.GetAll();
+            cmbUserList.ItemsSource = _usersList.Select(z => z.Name);
+        }
+
+        //private void txtNewUser_IsKeyboardFocusChanged(object sender, DependencyPropertyChangedEventArgs e)
+        //{
+        //    txtNewUser.Text = string.Empty;
+        //}
     }
+
 }

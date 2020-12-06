@@ -22,7 +22,13 @@ namespace BudgetManager.DL
                 new TransactionCategory {TransactionType = ETransactionType.Income, TransactionCategoryName = "Kita"}
             };
             context.TransactionCategories.AddRange(transactionCategories);
-            context.SaveChanges();
+            List<User> userList = new List<User>
+            {
+                new User {Name = "PirmasVartotojas"},
+                new User {Name = "AntrasVartotojas"},
+                new User {Name = "TrečiasVartotojas"}
+            };
+            context.Users.AddRange(userList);
         }
     }
 }

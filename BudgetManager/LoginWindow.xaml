@@ -1,12 +1,30 @@
-﻿<Window x:Class="BudgetManager.LoginWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetManager"
+        xmlns:DL="clr-namespace:BudgetManager.DL;assembly=BudgetManager.DL" x:Class="BudgetManager.LoginWindow"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="250" Width="300">
+        Title="Login" Height="250" Width="300">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Right" VerticalAlignment="Center" Text="Select user:" FontSize="15"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Right" VerticalAlignment="Center" Text="Create user:" FontSize="15"></TextBlock>
+        <ComboBox x:Name="cmbUserList" Grid.Row="1" Grid.Column="1" Margin="5,5.4,30,5" DropDownOpened="cmbUserList_DropDown"/>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+            <TextBox x:Name="txtNewUser" Text="Insert user name" VerticalAlignment="Center" Margin="5,6,5,6.4" Width="100" IsKeyboardFocusedChanged="txtNewUser_IsKeyboardFocusChanged"/>
+            <Button x:Name="btnNewUserCreate" Width="50" Margin="5 5 5 5" Content="Create" Click="btnNewUserCreate_Click"/>
+        </StackPanel>
+        <Button x:Name="btnLoginWindowLogin" Grid.Column="1" Grid.Row="3" Height="25" Content="Login" Width="100" HorizontalAlignment="Left"/>
     </Grid>
 </Window>
