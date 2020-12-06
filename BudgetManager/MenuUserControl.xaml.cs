@@ -30,6 +30,12 @@ namespace BudgetManager
             InitializeComponent();
             _loginWindow = new LoginWindow();
             _userManager = new UserManager();
+            btnBudget.IsEnabled = false;
+            btnAddExpense.IsEnabled = false;
+            btnAddIncome.IsEnabled = false;
+            btnEdit.IsEnabled = false;
+            btnShowReport.IsEnabled = false;
+            btnLogOut.IsEnabled = false;
 
         }
 
@@ -45,6 +51,13 @@ namespace BudgetManager
             _loginWindow.Close();
             _selectedUser = _userManager.SelectUserByName((string)sender);
             txtLoggedAs.Text = $"Logged as: {_selectedUser.Name}";
+            btnBudget.IsEnabled = true;
+            btnAddExpense.IsEnabled = true;
+            btnAddIncome.IsEnabled = true;
+            btnEdit.IsEnabled = true;
+            btnShowReport.IsEnabled = true;
+            btnLogOut.IsEnabled = true;
         }
+
     }
 }
