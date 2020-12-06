@@ -21,23 +21,30 @@ namespace BudgetManager
     /// </summary>
     public partial class LoginWindow : Window
     {
+        public event RoutedEventHandler btnLoginWindowLogin_ClickHandler;
         private List<User> _usersList;
-        private readonly ICRUDRepository<User> _userManager;
+        private readonly IUserManager _userManager;
         
         public LoginWindow()
         {
             InitializeComponent();
             _userManager = new UserManager();
-            //_usersList = _userManager.GetAll();
-            //cmbUserList.ItemsSource = _usersList.Select(z => z.Name);
         }
 
 
 
         private void btnNewUserCreate_Click(object sender, RoutedEventArgs e)
         {
-            _userManager.Add(new User { Name = txtNewUser.Text });
-            MessageBox.Show($"User {txtNewUser.Text} created");
+            if (!string.IsNullOrWhiteSpace(txtNewUser.Text))
+            {
+                _userManager.Add(new User { Name = txtNewUser.Text });
+                MessageBox.Show($"User {txtNewUser.Text} created");
+            }
+            else
+            {
+                MessageBox.Show("Wrong input!");
+            }
+
             txtNewUser.Text = string.Empty;
         }
 
@@ -48,10 +55,19 @@ namespace BudgetManager
             cmbUserList.ItemsSource = _usersList.Select(z => z.Name);
         }
 
-        //private void txtNewUser_IsKeyboardFocusChanged(object sender, DependencyPropertyChangedEventArgs e)
-        //{
-        //    txtNewUser.Text = string.Empty;
-        //}
+        private void btnLoginWindowLogin_Click(object sender, RoutedEventArgs e)
+        {
+            if (cmbUserList.SelectedIndex > -1)
+            {
+                var a = cmbUserList.SelectedItem;
+                btnLoginWindowLogin_ClickHandler(cmbUserList.SelectedItem, e);
+            }
+            else
+            {
+                MessageBox.Show("User was not selected!");
+            }
+            
+        }
     }
 
 }

@@ -13,6 +13,7 @@ namespace BudgetManager
         public MainWindow()
         {
             InitializeComponent();
+            
 
         }
     }

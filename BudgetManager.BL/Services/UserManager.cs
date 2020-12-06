@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BudgetManager.BL
 {
-    public class UserManager : ICRUDRepository<User>
+    public class UserManager : IUserManager
     {
         public int Add(User entity)
         {
@@ -31,7 +31,7 @@ namespace BudgetManager.BL
                 context.Users.Remove(entity);
                 context.SaveChanges();
             }
-        }   
+        }
 
         public User Get(int key)
         {
@@ -60,6 +60,16 @@ namespace BudgetManager.BL
                 context.Entry(entity).State = EntityState.Modified;
                 context.SaveChanges();
             }
+        }
+
+        public User SelectUserByName(string userName)
+        {
+            User user;
+            using (var context = new BudgetContext())
+            {
+                user = context.Users.Where(z => z.Name == userName).FirstOrDefault();
+            }
+            return user;
         }
     }
 }

@@ -22,9 +22,9 @@
         <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Right" VerticalAlignment="Center" Text="Create user:" FontSize="15"></TextBlock>
         <ComboBox x:Name="cmbUserList" Grid.Row="1" Grid.Column="1" Margin="5,5.4,30,5" DropDownOpened="cmbUserList_DropDown"/>
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-            <TextBox x:Name="txtNewUser" Text="Insert user name" VerticalAlignment="Center" Margin="5,6,5,6.4" Width="100" IsKeyboardFocusedChanged="txtNewUser_IsKeyboardFocusChanged"/>
-            <Button x:Name="btnNewUserCreate" Width="50" Margin="5 5 5 5" Content="Create" Click="btnNewUserCreate_Click"/>
+            <TextBox x:Name="txtNewUser"  VerticalAlignment="Center" Margin="5,6,5,6.4" Width="100"></TextBox>
+            <Button x:Name="btnNewUserCreate" Width="50" Margin="5 5 5 5" Content="Create" Click="btnNewUserCreate_Click"></Button>
         </StackPanel>
-        <Button x:Name="btnLoginWindowLogin" Grid.Column="1" Grid.Row="3" Height="25" Content="Login" Width="100" HorizontalAlignment="Left"/>
+        <Button x:Name="btnLoginWindowLogin" Grid.Column="1" Grid.Row="3" Height="25" Content="Login" Width="100" HorizontalAlignment="Left" Click="btnLoginWindowLogin_Click"/>
     </Grid>
 </Window>

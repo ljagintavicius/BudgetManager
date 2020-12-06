@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\ICRUDRepository.cs" />
+    <Compile Include="Interfaces\IUserManager.cs" />
     <Compile Include="Services\TransactionManager.cs" />
     <Compile Include="Services\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
