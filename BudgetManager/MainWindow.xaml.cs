@@ -22,6 +22,7 @@ namespace BudgetManager
             _transactions = _transactionManager.GetAll();
             dgBudget.ItemsSource = _transactions;
             dgBudget.Visibility = Visibility.Hidden;
+            AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
             MenuUserControl.btnShowExpensesIncome_ClickHandler += btnShowExpensesIncome_Click;
             MenuUserControl.btnLogOut_ClickHandler += btnLogOut_Click;
             MenuUserControl.btnAddExpenseIncome_ClickHandler += btnAddExpenseIncome_Click;
@@ -30,14 +31,18 @@ namespace BudgetManager
         private void btnShowExpensesIncome_Click(object sender, RoutedEventArgs e)
         {
             dgBudget.Visibility = Visibility.Visible;
+            AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
         }
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
             dgBudget.Visibility = Visibility.Hidden;
+            AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
         }
         private void btnAddExpenseIncome_Click(object sender, RoutedEventArgs e)
         {
             dgBudget.Visibility = Visibility.Hidden;
+            AddExpenseIncomeUserControl.Visibility = Visibility.Visible;
+            AddExpenseIncomeUserControl.SelectedUser = MenuUserControl.SelectedUser;
 
         }
     }

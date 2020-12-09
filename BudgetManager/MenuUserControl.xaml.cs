@@ -26,8 +26,9 @@ namespace BudgetManager
         public event RoutedEventHandler btnLogOut_ClickHandler;
         public event RoutedEventHandler btnAddExpenseIncome_ClickHandler;
         private readonly LoginWindow _loginWindow;
-        private User _selectedUser;
         private readonly IUserManager _userManager;
+
+        public User SelectedUser { get; set; }
         public MenuUserControl()
         {
             InitializeComponent();
@@ -52,8 +53,8 @@ namespace BudgetManager
         private void UnlockOtherButtons(object sender, RoutedEventArgs e)
         {
             _loginWindow.Visibility = Visibility.Hidden;
-            _selectedUser = (User)sender;
-            txtLoggedAs.Text = $"Logged as: {_selectedUser.Name}";
+            SelectedUser = (User)sender;
+            txtLoggedAs.Text = $"Logged as: {SelectedUser.Name}";
             btnShowExpensesIncome.IsEnabled = true;
             btnAddExpenseIncome.IsEnabled = true;
             btnEditExpensesIncome.IsEnabled = true;
@@ -81,7 +82,7 @@ namespace BudgetManager
 
         private void btnAddExpenseIncome_Click(object sender, RoutedEventArgs e)
         {
-            btnAddExpenseIncome_ClickHandler(sender, e);
+            btnAddExpenseIncome_ClickHandler(SelectedUser, e);
         }
     }
 }

@@ -67,7 +67,7 @@ namespace BudgetManager.BL
             User user;
             using (var context = new BudgetContext())
             {
-                user = context.Users.Where(z => z.Name == userName).FirstOrDefault();
+                user = context.Users.Include(z=>z.Transactions).Where(z => z.Name == userName).FirstOrDefault();
             }
             return user;
         }
