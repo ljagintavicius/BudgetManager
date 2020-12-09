@@ -10,16 +10,15 @@ namespace BudgetManager.DL
         {
             List<TransactionCategory> transactionCategories = new List<TransactionCategory>
             {
-                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Pramogos"},
-                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Maistas"},
-                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Mokslas"},
-                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Mokesčiai"},
-                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Transportas"},
-                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Kita"},
-                new TransactionCategory {TransactionType = ETransactionType.Income, TransactionCategoryName = "Atlyginimas"},
-                new TransactionCategory {TransactionType = ETransactionType.Income, TransactionCategoryName = "Dovanos"},
-                new TransactionCategory {TransactionType = ETransactionType.Income, TransactionCategoryName = "Laimėjimai"},
-                new TransactionCategory {TransactionType = ETransactionType.Income, TransactionCategoryName = "Kita"}
+                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Entertainment"},
+                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Food"},
+                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Education"},
+                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Taxes"},
+                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Transport"},
+                new TransactionCategory {TransactionType = ETransactionType.Expense, TransactionCategoryName = "Other"},
+                new TransactionCategory {TransactionType = ETransactionType.Income, TransactionCategoryName = "Salary"},
+                new TransactionCategory {TransactionType = ETransactionType.Income, TransactionCategoryName = "Gifts"},
+                new TransactionCategory {TransactionType = ETransactionType.Income, TransactionCategoryName = "Other"}
             };
             context.TransactionCategories.AddRange(transactionCategories);
             List<User> userList = new List<User>

@@ -23,6 +23,7 @@ namespace BudgetManager
     {
         public event RoutedEventHandler btnLoginWindowLogin_ClickHandler;
         private List<User> _usersList;
+        private User _selectedUser;
         private readonly IUserManager _userManager;
         
         public LoginWindow()
@@ -59,14 +60,14 @@ namespace BudgetManager
         {
             if (cmbUserList.SelectedIndex > -1)
             {
-                var a = cmbUserList.SelectedItem;
-                btnLoginWindowLogin_ClickHandler(cmbUserList.SelectedItem, e);
+                _selectedUser = _userManager.SelectUserByName(cmbUserList.SelectedItem.ToString());
+                btnLoginWindowLogin_ClickHandler(_selectedUser, e);
             }
             else
             {
                 MessageBox.Show("User was not selected!");
             }
-            
+            cmbUserList.SelectedItem = null;
         }
     }
 
