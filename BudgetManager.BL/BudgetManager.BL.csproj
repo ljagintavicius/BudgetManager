@@ -54,10 +54,13 @@
     <Compile Include="Interfaces\ICRUDRepository.cs" />
     <Compile Include="Interfaces\IUserManager.cs" />
     <Compile Include="Interfaces\ITransactionCategoryManager.cs" />
+    <Compile Include="Interfaces\ITransactionViewModelManager.cs" />
     <Compile Include="Services\TransactionCategoryManager.cs" />
     <Compile Include="Services\TransactionManager.cs" />
+    <Compile Include="Services\TransactionViewModelManager.cs" />
     <Compile Include="Services\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\TransactionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

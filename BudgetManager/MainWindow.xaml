@@ -15,7 +15,11 @@
             <ColumnDefinition Width="650"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <local:MenuUserControl x:Name="MenuUserControl" Grid.Row="0" Grid.Column="0"></local:MenuUserControl>
-        <DataGrid x:Name="dgBudget" Grid.Row="0" Grid.Column="1" Width="650" Height="480"></DataGrid>
+        <DataGrid x:Name="dgBudget" Grid.Row="0" Grid.Column="1" Margin="9.6,0,31,56">
+            <DataGrid.Columns>
+
+            </DataGrid.Columns>
+        </DataGrid>
         <local:AddExpenseIncomeUserControl x:Name="AddExpenseIncomeUserControl" Grid.Row="0" Grid.Column="1"></local:AddExpenseIncomeUserControl>
     </Grid>
 </Window>

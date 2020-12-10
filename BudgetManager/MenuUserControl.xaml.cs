@@ -28,7 +28,7 @@ namespace BudgetManager
             btnLogin.IsEnabled = false;
             if (_loginWindow.IsActive) _loginWindow.Visibility = Visibility.Visible;
             else _loginWindow.Show();
-            _loginWindow.btnLoginWindowLogin_ClickHandler += UnlockInterfaceButtons;
+            _loginWindow.btnLoginWindowLogin_ClickHandler += UnlockInterfaceButtonsAndSelectUser;
 
         }
         private void LockInterfaceButtons()
@@ -39,7 +39,7 @@ namespace BudgetManager
             btnShowSummary.IsEnabled = false;
             btnLogOut.IsEnabled = false;
         }
-        private void UnlockInterfaceButtons(object sender, RoutedEventArgs e)
+        private void UnlockInterfaceButtonsAndSelectUser(object sender, RoutedEventArgs e)
         {
             _loginWindow.Visibility = Visibility.Hidden;
             SelectedUser = _loginWindow.SelectedUser;
@@ -67,7 +67,7 @@ namespace BudgetManager
 
         private void btnAddExpenseIncome_Click(object sender, RoutedEventArgs e)
         {
-            btnAddExpenseIncome_ClickHandler(SelectedUser, e);
+            btnAddExpenseIncome_ClickHandler(sender, e);
         }
     }
 }

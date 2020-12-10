@@ -52,7 +52,7 @@ namespace BudgetManager
             if (cmbUserList.SelectedIndex > -1)
             {
                 SelectedUser = _userManager.SelectUserByName(cmbUserList.SelectedItem.ToString());
-                btnLoginWindowLogin_ClickHandler(SelectedUser, e);
+                btnLoginWindowLogin_ClickHandler(sender, e);
             }
             else
             {

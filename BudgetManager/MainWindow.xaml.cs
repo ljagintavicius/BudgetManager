@@ -2,6 +2,7 @@
 using BudgetManager.BL.Services;
 using BudgetManager.DL.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace BudgetManager
@@ -11,12 +12,13 @@ namespace BudgetManager
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Transaction> _transactions;
-        private readonly ICRUDRepository<Transaction> _transactionManager;
+        private List<TransactionViewModel> _transactionViewModels;
+        private ITransactionViewModelManager _transactionViewModelManager;
+
         public MainWindow()
         {
             InitializeComponent();
-            _transactionManager = new TransactionManager();
+            _transactionViewModelManager = new TransactionViewModelManager();
             dgBudget.Visibility = Visibility.Hidden;
             AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
             MenuUserControl.btnShowExpensesIncome_ClickHandler += btnShowExpensesIncome_Click;
@@ -26,8 +28,8 @@ namespace BudgetManager
 
         private void btnShowExpensesIncome_Click(object sender, RoutedEventArgs e)
         {
-            _transactions = _transactionManager.GetAll();
-            dgBudget.ItemsSource = _transactions;
+            _transactionViewModels = _transactionViewModelManager.GetAllOrUpdate();
+            dgBudget.ItemsSource = _transactionViewModels;
             dgBudget.Visibility = Visibility.Visible;
             dgBudget.Items.Refresh();
             AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
