@@ -5,17 +5,8 @@ using BudgetManager.DL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BudgetManager
 {
@@ -35,7 +26,7 @@ namespace BudgetManager
         public AddExpenseIncomeUserControl()
         {
             InitializeComponent();
-            
+
             _selectedDateTime = DateTime.Now;
             txtDate.Text = _selectedDateTime.ToString("yyyy-MM-dd");
             cmbCategory.IsEnabled = false;
@@ -43,7 +34,7 @@ namespace BudgetManager
             _transactionCategoryManager = new TransactionCategoryManager();
             _transactionCategories = _transactionCategoryManager.GetAll();
             cmbExpenseOrIncome.ItemsSource = Enum.GetNames(typeof(ETransactionType));
-            
+
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -72,9 +63,9 @@ namespace BudgetManager
         private void cmbExpenseOrIncome_DropDownClosed(object sender, EventArgs e)
         {
             cmbCategory.IsEnabled = true;
-            if ((string)cmbExpenseOrIncome.SelectedItem == Enum.GetName(typeof(ETransactionType),ETransactionType.Expense))
+            if ((string)cmbExpenseOrIncome.SelectedItem == Enum.GetName(typeof(ETransactionType), ETransactionType.Expense))
             {
-                cmbCategory.ItemsSource = _transactionCategories.Where(z => z.TransactionType == ETransactionType.Expense).Select(z=>z.TransactionCategoryName);
+                cmbCategory.ItemsSource = _transactionCategories.Where(z => z.TransactionType == ETransactionType.Expense).Select(z => z.TransactionCategoryName);
             }
             else
             {

@@ -1,9 +1,7 @@
 ﻿using BudgetManager.BL;
 using BudgetManager.BL.Services;
-using BudgetManager.DL;
 using BudgetManager.DL.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 
 namespace BudgetManager
@@ -19,7 +17,7 @@ namespace BudgetManager
         {
             InitializeComponent();
             _transactionManager = new TransactionManager();
-            
+
             dgBudget.Visibility = Visibility.Hidden;
             AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
             MenuUserControl.btnShowExpensesIncome_ClickHandler += btnShowExpensesIncome_Click;

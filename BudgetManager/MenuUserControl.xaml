@@ -8,11 +8,11 @@
              d:DesignHeight="450" d:DesignWidth="150">
     <StackPanel Orientation="Vertical">
         <TextBlock x:Name="txtLoggedAs" HorizontalAlignment="Center" Height="10" Margin="5 5 5 0" FontSize="8"></TextBlock>
-        <Button x:Name="btnLogin" Height="40" Margin="10 10 10 10" Content="Login" FontSize="20" Click="btnLogin_Click"></Button>
+        <Button x:Name="btnLogin" Height="40" Margin="10 10 10 10" Content="Login" FontSize="13" Click="btnLogin_Click"></Button>
         <Button x:Name="btnShowExpensesIncome" Height="40" Margin="10 10 10 10" Content="Show expenses/income" FontSize="12" Click="btnShowExpensesIncome_Click"></Button>
         <Button x:Name="btnAddExpenseIncome" Height="40" Margin="10 10 10 10" Content="Add expense/income" FontSize="13" Click="btnAddExpenseIncome_Click"></Button>
         <Button x:Name="btnEditExpensesIncome" Height="40" Margin="10 10 10 10" Content="Edit expenses/income" FontSize="13" ></Button>
-        <Button x:Name="btnShowReport" Height="40" Margin="10 10 10 10" Content="Show report" FontSize="20"></Button>
-        <Button x:Name="btnLogOut" Height="40" Margin="10 10 10 10" Content="Log out" FontSize="20" Click="btnLogOut_Click"></Button>
+        <Button x:Name="btnShowSummary" Height="40" Margin="10 10 10 10" Content="Show summary" FontSize="13"></Button>
+        <Button x:Name="btnLogOut" Height="40" Margin="10 10 10 10" Content="Log out" FontSize="13" Click="btnLogOut_Click"></Button>
     </StackPanel>
 </UserControl>
