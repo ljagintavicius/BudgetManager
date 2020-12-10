@@ -17,7 +17,6 @@ namespace BudgetManager
         {
             InitializeComponent();
             _transactionManager = new TransactionManager();
-
             dgBudget.Visibility = Visibility.Hidden;
             AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
             MenuUserControl.btnShowExpensesIncome_ClickHandler += btnShowExpensesIncome_Click;
