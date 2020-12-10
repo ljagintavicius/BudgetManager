@@ -11,7 +11,7 @@ namespace BudgetManager.DL.Models
         public int TransactionCategoryId { get; set; }
         public ETransactionType TransactionType { get; set; }
         public string TransactionCategoryName { get; set; }
-        public List<Transaction> Transactions { get; set; }
+        public virtual List<Transaction> Transactions { get; set; }
 
     }
 }

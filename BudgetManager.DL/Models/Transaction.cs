@@ -15,9 +15,9 @@ namespace BudgetManager.DL.Models
         [Key]
         public int TransactionId { get; set; }
         public int TransactionCategoryId { get; set; }
-        public TransactionCategory TransactionCategory { get; set; }
+        public virtual TransactionCategory TransactionCategory { get; set; }
         public int UserId { get; set; }
-        public User User { get; set; }
+        public virtual User User { get; set; }
         public DateTime TransactionDate { get; set; }
         public decimal Sum { get; set; }
     }

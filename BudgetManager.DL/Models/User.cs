@@ -15,6 +15,6 @@ namespace BudgetManager.DL
         [Key]
         public int UserId { get; set; }
         public string Name { get; set; }
-        public List<Transaction> Transactions { get; set; }
+        public virtual List<Transaction> Transactions { get; set; }
     }
 }

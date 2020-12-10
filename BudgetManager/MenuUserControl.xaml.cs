@@ -34,11 +34,7 @@ namespace BudgetManager
             InitializeComponent();
             _loginWindow = new LoginWindow();
             _userManager = new UserManager();
-            btnShowExpensesIncome.IsEnabled = false;
-            btnAddExpenseIncome.IsEnabled = false;
-            btnEditExpensesIncome.IsEnabled = false;
-            btnShowReport.IsEnabled = false;
-            btnLogOut.IsEnabled = false;
+            LockInterfaceButtons();
 
         }
 
@@ -47,13 +43,21 @@ namespace BudgetManager
             btnLogin.IsEnabled = false;
             if (_loginWindow.IsActive) _loginWindow.Visibility = Visibility.Visible;
             else _loginWindow.Show();
-            _loginWindow.btnLoginWindowLogin_ClickHandler += UnlockOtherButtons;
+            _loginWindow.btnLoginWindowLogin_ClickHandler += UnlockInterfaceButtons;
 
         }
-        private void UnlockOtherButtons(object sender, RoutedEventArgs e)
+        private void LockInterfaceButtons()
+        {
+            btnShowExpensesIncome.IsEnabled = false;
+            btnAddExpenseIncome.IsEnabled = false;
+            btnEditExpensesIncome.IsEnabled = false;
+            btnShowReport.IsEnabled = false;
+            btnLogOut.IsEnabled = false;
+        }
+        private void UnlockInterfaceButtons(object sender, RoutedEventArgs e)
         {
             _loginWindow.Visibility = Visibility.Hidden;
-            SelectedUser = (User)sender;
+            SelectedUser = _loginWindow.SelectedUser;
             txtLoggedAs.Text = $"Logged as: {SelectedUser.Name}";
             btnShowExpensesIncome.IsEnabled = true;
             btnAddExpenseIncome.IsEnabled = true;
@@ -67,11 +71,7 @@ namespace BudgetManager
         {
             txtLoggedAs.Text = string.Empty;
             btnLogin.IsEnabled = true;
-            btnShowExpensesIncome.IsEnabled = false;
-            btnAddExpenseIncome.IsEnabled = false;
-            btnEditExpensesIncome.IsEnabled = false;
-            btnShowReport.IsEnabled = false;
-            btnLogOut.IsEnabled = false;
+            LockInterfaceButtons();
             btnLogOut_ClickHandler(sender, e);
         }
 

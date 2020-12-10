@@ -13,14 +13,13 @@ namespace BudgetManager
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly List<Transaction> _transactions;
+        private List<Transaction> _transactions;
         private readonly ICRUDRepository<Transaction> _transactionManager;
         public MainWindow()
         {
             InitializeComponent();
             _transactionManager = new TransactionManager();
-            _transactions = _transactionManager.GetAll();
-            dgBudget.ItemsSource = _transactions;
+            
             dgBudget.Visibility = Visibility.Hidden;
             AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
             MenuUserControl.btnShowExpensesIncome_ClickHandler += btnShowExpensesIncome_Click;
@@ -30,7 +29,10 @@ namespace BudgetManager
 
         private void btnShowExpensesIncome_Click(object sender, RoutedEventArgs e)
         {
+            _transactions = _transactionManager.GetAll();
+            dgBudget.ItemsSource = _transactions;
             dgBudget.Visibility = Visibility.Visible;
+            dgBudget.Items.Refresh();
             AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
         }
         private void btnLogOut_Click(object sender, RoutedEventArgs e)

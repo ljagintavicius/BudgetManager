@@ -23,7 +23,7 @@ namespace BudgetManager
     {
         public event RoutedEventHandler btnLoginWindowLogin_ClickHandler;
         private List<User> _usersList;
-        private User _selectedUser;
+        public User SelectedUser { get; set; }
         private readonly IUserManager _userManager;
         
         public LoginWindow()
@@ -60,8 +60,8 @@ namespace BudgetManager
         {
             if (cmbUserList.SelectedIndex > -1)
             {
-                _selectedUser = _userManager.SelectUserByName(cmbUserList.SelectedItem.ToString());
-                btnLoginWindowLogin_ClickHandler(_selectedUser, e);
+                SelectedUser = _userManager.SelectUserByName(cmbUserList.SelectedItem.ToString());
+                btnLoginWindowLogin_ClickHandler(SelectedUser, e);
             }
             else
             {

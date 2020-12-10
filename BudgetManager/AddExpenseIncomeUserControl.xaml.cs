@@ -31,6 +31,7 @@ namespace BudgetManager
         private Transaction _transaction;
 
         public User SelectedUser { get; set; }
+        public TransactionCategory SelectedTransactionCategory { get; set; }
         public AddExpenseIncomeUserControl()
         {
             InitializeComponent();
@@ -52,14 +53,20 @@ namespace BudgetManager
                 cmbCategory.SelectedItem != null &&
                 decimal.TryParse(txtAmount.Text, out decimal amount))
             {
-                _transaction = new Transaction 
-                { User = SelectedUser ,
-                  TransactionCategory = _transactionCategoryManager.SelectTransactionCategoryrByName(cmbCategory.SelectedItem.ToString()),
-                  TransactionDate = dateTime,
-                  Sum = amount
+                _transaction = new Transaction
+                {
+                    UserId = SelectedUser.UserId,
+                    TransactionCategoryId = SelectedTransactionCategory.TransactionCategoryId,
+                    TransactionDate = dateTime,
+                    Sum = amount
                 };
                 _transactionManager.Add(_transaction);
+                MessageBox.Show("Entry saved!");
+                cmbExpenseOrIncome.SelectedItem = null;
+                cmbCategory.SelectedItem = null;
+                txtAmount.Text = string.Empty;
             }
+            else MessageBox.Show("Incorrect input!");
         }
 
         private void cmbExpenseOrIncome_DropDownClosed(object sender, EventArgs e)
@@ -76,7 +83,10 @@ namespace BudgetManager
 
         }
 
-
-        
+        private void cmbCategory_DropDownClosed(object sender, EventArgs e)
+        {
+            if (cmbCategory.SelectedIndex > -1)
+                SelectedTransactionCategory = _transactionCategoryManager.SelectTransactionCategoryrByName(cmbCategory.SelectedItem.ToString());
+        }
     }
 }

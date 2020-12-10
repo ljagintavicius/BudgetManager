@@ -67,7 +67,7 @@ namespace BudgetManager.BL.Services
             TransactionCategory transactionCategory;
             using (var context = new BudgetContext())
             {
-                transactionCategory = context.TransactionCategories.Include(z=>z.Transactions).Where(z => z.TransactionCategoryName == transactionCategoryName).FirstOrDefault();
+                transactionCategory = context.TransactionCategories.Where(z => z.TransactionCategoryName == transactionCategoryName).FirstOrDefault();
             }
             return transactionCategory;
         }
