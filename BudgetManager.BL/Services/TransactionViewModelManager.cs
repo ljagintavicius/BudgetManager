@@ -9,9 +9,8 @@ namespace BudgetManager.BL.Services
 {
     public class TransactionViewModelManager : ITransactionViewModelManager
     {
-        private List<Transaction> _transactions;
         private ICRUDRepository<Transaction> _transactionManager;
-        private List<TransactionViewModel> _transactionViewModels { get; set; }
+        private List<TransactionViewModel> _transactionViewModels;
 
 
         public TransactionViewModelManager()
@@ -23,7 +22,7 @@ namespace BudgetManager.BL.Services
 
         private void SetValues()
         {
-            _transactions = _transactionManager.GetAll();
+            List<Transaction> _transactions = _transactionManager.GetAll();
             foreach (var transaction in _transactions)
             {
                 TransactionViewModel viewModel = new TransactionViewModel();

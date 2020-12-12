@@ -12,7 +12,7 @@
         <Button x:Name="btnShowExpensesIncome" Height="40" Margin="10 10 10 10" Content="Show expenses/income" FontSize="12" Click="btnShowExpensesIncome_Click"></Button>
         <Button x:Name="btnAddExpenseIncome" Height="40" Margin="10 10 10 10" Content="Add expense/income" FontSize="13" Click="btnAddExpenseIncome_Click"></Button>
         <Button x:Name="btnEditExpensesIncome" Height="40" Margin="10 10 10 10" Content="Edit expenses/income" FontSize="13" ></Button>
-        <Button x:Name="btnShowSummary" Height="40" Margin="10 10 10 10" Content="Show summary" FontSize="13"></Button>
+        <Button x:Name="btnShowSummary" Height="40" Margin="10 10 10 10" Content="Show summary" FontSize="13" Click="btnShowSummary_Click"></Button>
         <Button x:Name="btnLogOut" Height="40" Margin="10 10 10 10" Content="Log out" FontSize="13" Click="btnLogOut_Click"></Button>
     </StackPanel>
 </UserControl>

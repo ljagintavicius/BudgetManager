@@ -12,6 +12,7 @@ namespace BudgetManager
         public event RoutedEventHandler btnShowExpensesIncome_ClickHandler;
         public event RoutedEventHandler btnLogOut_ClickHandler;
         public event RoutedEventHandler btnAddExpenseIncome_ClickHandler;
+        public event RoutedEventHandler btnShowSummary_ClickHandler;
         private readonly LoginWindow _loginWindow;
 
         public User SelectedUser { get; set; }
@@ -28,7 +29,7 @@ namespace BudgetManager
             btnLogin.IsEnabled = false;
             if (_loginWindow.IsActive) _loginWindow.Visibility = Visibility.Visible;
             else _loginWindow.Show();
-            _loginWindow.btnLoginWindowLogin_ClickHandler += UnlockInterfaceButtonsAndSelectUser;
+            _loginWindow.btnLoginWindowLogin_ClickHandler += UserLogin;
 
         }
         private void LockInterfaceButtons()
@@ -39,16 +40,20 @@ namespace BudgetManager
             btnShowSummary.IsEnabled = false;
             btnLogOut.IsEnabled = false;
         }
-        private void UnlockInterfaceButtonsAndSelectUser(object sender, RoutedEventArgs e)
+        private void UnlockInterfaceButtons()
         {
-            _loginWindow.Visibility = Visibility.Hidden;
-            SelectedUser = _loginWindow.SelectedUser;
-            txtLoggedAs.Text = $"Logged as: {SelectedUser.Name}";
             btnShowExpensesIncome.IsEnabled = true;
             btnAddExpenseIncome.IsEnabled = true;
             btnEditExpensesIncome.IsEnabled = true;
             btnShowSummary.IsEnabled = true;
             btnLogOut.IsEnabled = true;
+        }
+        private void UserLogin(object sender, RoutedEventArgs e)
+        {
+            _loginWindow.Visibility = Visibility.Hidden;
+            SelectedUser = _loginWindow.SelectedUser;
+            txtLoggedAs.Text = $"Logged as: {SelectedUser.Name}";
+            UnlockInterfaceButtons();
 
         }
 
@@ -68,6 +73,11 @@ namespace BudgetManager
         private void btnAddExpenseIncome_Click(object sender, RoutedEventArgs e)
         {
             btnAddExpenseIncome_ClickHandler(sender, e);
+        }
+
+        private void btnShowSummary_Click(object sender, RoutedEventArgs e)
+        {
+            btnShowSummary_ClickHandler(sender, e);
         }
     }
 }
