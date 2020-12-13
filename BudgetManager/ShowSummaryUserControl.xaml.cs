@@ -33,6 +33,7 @@ namespace BudgetManager
         {
             InitializeComponent();
             _transactionManager = new TransactionManager();
+            txtBalanceText.Visibility = Visibility.Hidden;
             lvUsersInfo.Visibility = Visibility.Hidden;
             
         }
@@ -56,6 +57,8 @@ namespace BudgetManager
                 _userTransactonsViewModels = _userTransactionsViewModelManager.GetDateSortedUserTransactions();
                 lvUsersInfo.Visibility = Visibility.Visible;
                 lvUsersInfo.ItemsSource = _userTransactonsViewModels;
+                txtBalanceText.Visibility = Visibility.Visible;
+                txtTotalBalance.Text = $"{_userTransactionsViewModelManager.Balance} Eur";
             }
 
         }

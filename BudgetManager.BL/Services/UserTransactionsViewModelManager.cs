@@ -14,6 +14,7 @@ namespace BudgetManager.BL.Services
         private readonly List<User> _users;
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        public decimal Balance { get; set; }
 
         public UserTransactionsViewModelManager(DateTime startTime, DateTime endTime)
         {
@@ -43,7 +44,13 @@ namespace BudgetManager.BL.Services
                             .Sum(z => z.Sum)
                 });
             }
-            userTransactionsViewModels.Add(new UserTransactionsViewModel()
+            userTransactionsViewModels.Add(GetTotalIncomeExpensesSum());
+            return userTransactionsViewModels;
+        }
+
+        private UserTransactionsViewModel GetTotalIncomeExpensesSum ()
+        {
+            UserTransactionsViewModel totalIncomeExpensesSum = new UserTransactionsViewModel()
             {
                 UserName = "Total",
                 Income = _users
@@ -56,8 +63,9 @@ namespace BudgetManager.BL.Services
                             .Where(z => z.TransactionDate >= StartTime && z.TransactionDate < EndTime)
                             .Where(z => z.TransactionCategory.TransactionType == ETransactionType.Expense)
                             .Sum(z => z.Sum)).Sum()
-            });
-            return userTransactionsViewModels;
+            };
+            Balance = totalIncomeExpensesSum.Income - totalIncomeExpensesSum.Expenses;
+            return totalIncomeExpensesSum;
         }
     }
 }

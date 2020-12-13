@@ -24,8 +24,11 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Path=UserName}" Header="User name" Width="80"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Income}" Header="Income, Eur" Width="70"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Expenses}" Header="Expenses, Eur" Width="80"></GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>
+        <TextBlock x:Name="txtBalanceText" HorizontalAlignment="Left" Margin="170,215.2,0,-130.4" Grid.Row="1" TextWrapping="Wrap" Text="Balance" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtTotalBalance" HorizontalAlignment="Left" Margin="222,215.2,0,-130.4" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>
