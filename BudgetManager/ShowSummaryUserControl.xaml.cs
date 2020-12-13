@@ -29,13 +29,14 @@ namespace BudgetManager
         private ICRUDRepository<Transaction> _transactionManager;
         private List<UserTransactionsViewModel> _userTransactonsViewModels;
         private UserTransactionsViewModelManager _userTransactionsViewModelManager;
+        private List<TransactionCategoryViewModel> _expenseCategoryViewModels;
+        private List<TransactionCategoryViewModel> _incomeCategoryViewModels;
+        private TransactionCategoryViewModelManager _transactionCategoryViewModelManager;
         public ShowSummaryUserControl()
         {
             InitializeComponent();
             _transactionManager = new TransactionManager();
-            txtBalanceText.Visibility = Visibility.Hidden;
-            lvUsersInfo.Visibility = Visibility.Hidden;
-            
+            HideListViews();
         }
 
         private void cmbSelectedYearAndMonth_DropDownOpened(object sender, EventArgs e)
@@ -55,12 +56,32 @@ namespace BudgetManager
                 _userTransactionsViewModelManager
                   = new UserTransactionsViewModelManager(DateTime.Parse((string)cmbSelectedYearAndMonth.SelectedItem), DateTime.Parse((string)cmbSelectedYearAndMonth.SelectedItem).AddMonths(oneMonth));
                 _userTransactonsViewModels = _userTransactionsViewModelManager.GetDateSortedUserTransactions();
-                lvUsersInfo.Visibility = Visibility.Visible;
+                ShowListViews();
                 lvUsersInfo.ItemsSource = _userTransactonsViewModels;
-                txtBalanceText.Visibility = Visibility.Visible;
                 txtTotalBalance.Text = $"{_userTransactionsViewModelManager.Balance} Eur";
+                _transactionCategoryViewModelManager
+                    = new TransactionCategoryViewModelManager(DateTime.Parse((string)cmbSelectedYearAndMonth.SelectedItem), DateTime.Parse((string)cmbSelectedYearAndMonth.SelectedItem).AddMonths(oneMonth));
+                _expenseCategoryViewModels = _transactionCategoryViewModelManager.GetDateSortedTransactionCategoriesAndSum(ETransactionType.Expense);
+                _incomeCategoryViewModels = _transactionCategoryViewModelManager.GetDateSortedTransactionCategoriesAndSum(ETransactionType.Income);
+                lvExpenseCategories.ItemsSource = _expenseCategoryViewModels;
+                lvIncomeCategories.ItemsSource = _incomeCategoryViewModels;
             }
 
+        }
+        private void ShowListViews()
+        {
+            lvUsersInfo.Visibility = Visibility.Visible;
+            txtBalanceText.Visibility = Visibility.Visible;
+            lvExpenseCategories.Visibility = Visibility.Visible;
+            lvIncomeCategories.Visibility = Visibility.Visible;
+        }
+
+        private void HideListViews()
+        {
+            txtBalanceText.Visibility = Visibility.Hidden;
+            lvUsersInfo.Visibility = Visibility.Hidden;
+            lvExpenseCategories.Visibility = Visibility.Hidden;
+            lvIncomeCategories.Visibility = Visibility.Hidden;
         }
     }
 }

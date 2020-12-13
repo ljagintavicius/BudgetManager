@@ -44,15 +44,15 @@ namespace BudgetManager.BL.Services
                             .Sum(z => z.Sum)
                 });
             }
-            userTransactionsViewModels.Add(GetTotalIncomeExpensesSum());
+            userTransactionsViewModels.Add(GetTotalIncomeAndExpenses());
             return userTransactionsViewModels;
         }
 
-        private UserTransactionsViewModel GetTotalIncomeExpensesSum ()
+        private UserTransactionsViewModel GetTotalIncomeAndExpenses ()
         {
-            UserTransactionsViewModel totalIncomeExpensesSum = new UserTransactionsViewModel()
+            UserTransactionsViewModel totalIncomeAndExpenses = new UserTransactionsViewModel()
             {
-                UserName = "Total",
+                UserName = "TOTAL",
                 Income = _users
                             .Select(x => x.Transactions
                             .Where(z => z.TransactionDate >= StartTime && z.TransactionDate < EndTime)
@@ -64,8 +64,8 @@ namespace BudgetManager.BL.Services
                             .Where(z => z.TransactionCategory.TransactionType == ETransactionType.Expense)
                             .Sum(z => z.Sum)).Sum()
             };
-            Balance = totalIncomeExpensesSum.Income - totalIncomeExpensesSum.Expenses;
-            return totalIncomeExpensesSum;
+            Balance = totalIncomeAndExpenses.Income - totalIncomeAndExpenses.Expenses;
+            return totalIncomeAndExpenses;
         }
     }
 }

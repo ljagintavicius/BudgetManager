@@ -55,8 +55,10 @@
     <Compile Include="Interfaces\IUserManager.cs" />
     <Compile Include="Interfaces\ITransactionCategoryManager.cs" />
     <Compile Include="Interfaces\ITransactionViewModelManager.cs" />
+    <Compile Include="Models\TransactionCategoryViewModel.cs" />
     <Compile Include="Models\UserTransactionsViewModel.cs" />
     <Compile Include="Services\TransactionCategoryManager.cs" />
+    <Compile Include="Services\TransactionCategoryViewModelManager.cs" />
     <Compile Include="Services\TransactionManager.cs" />
     <Compile Include="Services\TransactionViewModelManager.cs" />
     <Compile Include="Services\UserManager.cs" />

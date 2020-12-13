@@ -46,7 +46,7 @@ namespace BudgetManager.BL.Services
             List<TransactionCategory> entityList;
             using (var context = new BudgetContext())
             {
-                entityList = context.TransactionCategories.ToList();
+                entityList = context.TransactionCategories.Include(z=>z.Transactions).ToList();
             }
             return entityList;
         }
