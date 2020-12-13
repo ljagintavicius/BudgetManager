@@ -45,7 +45,7 @@ namespace BudgetManager.BL
             List<User> entityList;
             using (var context = new BudgetContext())
             {
-                entityList = context.Users.ToList();
+                entityList = context.Users.Include(z=>z.Transactions.Select(x=>x.TransactionCategory)).ToList();
             }
             return entityList;
         }

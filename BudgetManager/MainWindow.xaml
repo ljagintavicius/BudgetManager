@@ -21,5 +21,6 @@
             </DataGrid.Columns>
         </DataGrid>
         <local:AddExpenseIncomeUserControl x:Name="AddExpenseIncomeUserControl" Grid.Row="0" Grid.Column="1"></local:AddExpenseIncomeUserControl>
+        <local:ShowSummaryUserControl x:Name="ShowSummaryUserControl" Grid.Row="0" Grid.Column="1"></local:ShowSummaryUserControl>
     </Grid>
 </Window>

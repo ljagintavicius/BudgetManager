@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ShowSummaryUserControl.xaml.cs">
+      <DependentUpon>ShowSummaryUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddExpenseIncomeUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +95,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MenuUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowSummaryUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
