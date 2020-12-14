@@ -9,9 +9,8 @@ namespace BudgetManager
     /// </summary>
     public partial class MenuUserControl : UserControl
     {
-        public event RoutedEventHandler btnShowExpensesIncome_ClickHandler;
+        public event RoutedEventHandler btnBudgetEntries_ClickHandler;
         public event RoutedEventHandler btnLogOut_ClickHandler;
-        public event RoutedEventHandler btnAddExpenseIncome_ClickHandler;
         public event RoutedEventHandler btnShowSummary_ClickHandler;
         private readonly LoginWindow _loginWindow;
 
@@ -21,7 +20,7 @@ namespace BudgetManager
             InitializeComponent();
             _loginWindow = new LoginWindow();
             LockInterfaceButtons();
-
+            
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -34,17 +33,13 @@ namespace BudgetManager
         }
         private void LockInterfaceButtons()
         {
-            btnShowExpensesIncome.IsEnabled = false;
-            btnAddExpenseIncome.IsEnabled = false;
-            btnEditExpensesIncome.IsEnabled = false;
+            btnBudgetEntries.IsEnabled = false;
             btnShowSummary.IsEnabled = false;
             btnLogOut.IsEnabled = false;
         }
         private void UnlockInterfaceButtons()
         {
-            btnShowExpensesIncome.IsEnabled = true;
-            btnAddExpenseIncome.IsEnabled = true;
-            btnEditExpensesIncome.IsEnabled = true;
+            btnBudgetEntries.IsEnabled = true;
             btnShowSummary.IsEnabled = true;
             btnLogOut.IsEnabled = true;
         }
@@ -65,14 +60,9 @@ namespace BudgetManager
             btnLogOut_ClickHandler(sender, e);
         }
 
-        private void btnShowExpensesIncome_Click(object sender, RoutedEventArgs e)
+        private void btnBudgetEntries_Click(object sender, RoutedEventArgs e)
         {
-            btnShowExpensesIncome_ClickHandler(sender, e);
-        }
-
-        private void btnAddExpenseIncome_Click(object sender, RoutedEventArgs e)
-        {
-            btnAddExpenseIncome_ClickHandler(sender, e);
+            btnBudgetEntries_ClickHandler(sender, e);
         }
 
         private void btnShowSummary_Click(object sender, RoutedEventArgs e)

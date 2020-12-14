@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="BudgetManager.AddEntryUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BudgetManager"
+             mc:Ignorable="d" 
+             d:DesignHeight="130" d:DesignWidth="650">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock Text="Date" TextAlignment="Center" Height="20" Width="100" Margin="10 0 10 0"></TextBlock>
+            <TextBlock Text="Expense/Income" TextAlignment="Center" Height="20" Width="100" Margin="10 0 10 0"></TextBlock>
+            <TextBlock Text="Category" TextAlignment="Center" Height="20" Width="100" Margin="10 0 10 0"></TextBlock>
+            <TextBlock Text="Amount, Eur" TextAlignment="Center" Height="20" Width="100" Margin="10 0 10 0"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBox x:Name="txtDate" Height="20" Width="100" Margin="10 0 10 0"></TextBox>
+            <ComboBox x:Name="cmbExpenseOrIncome" Height="20" Width="100" Margin="10 0 10 0" DropDownClosed="cmbExpenseOrIncome_DropDownClosed"/>
+            <ComboBox x:Name="cmbCategory" Height="20" Width="100" Margin="10 0 10 0" DropDownClosed="cmbCategory_DropDownClosed"></ComboBox>
+            <TextBox x:Name="txtAmount" Height="20" Width="100" Margin="10 0 10 0"></TextBox>
+        </StackPanel>
+        <Button x:Name="btnSave" Grid.Row="2"  Content="Save" Height="20" Width="100" VerticalAlignment="Top" Click="btnSave_Click"></Button>
+    </Grid>
+</UserControl>

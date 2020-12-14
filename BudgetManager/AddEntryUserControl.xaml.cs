@@ -22,17 +22,19 @@ namespace BudgetManager
     /// <summary>
     /// Interaction logic for AddExpenseIncomeUserControl.xaml
     /// </summary>
-    public partial class AddExpenseIncomeUserControl : UserControl
+    public partial class AddEntryUserControl : UserControl
     {
+        public event RoutedEventHandler btnSave_ClickHandler;
         private DateTime _selectedDateTime;
         private List<TransactionCategory> _transactionCategories;
         private readonly ICRUDRepository<Transaction> _transactionManager;
         private readonly ITransactionCategoryManager _transactionCategoryManager;
         private Transaction _transaction;
+        private TransactionCategory _selectedTransactionCategory;
 
         public User SelectedUser { get; set; }
-        public TransactionCategory SelectedTransactionCategory { get; set; }
-        public AddExpenseIncomeUserControl()
+
+        public AddEntryUserControl()
         {
             InitializeComponent();
             
@@ -54,7 +56,7 @@ namespace BudgetManager
                 _transaction = new Transaction
                 {
                     UserId = SelectedUser.UserId,
-                    TransactionCategoryId = SelectedTransactionCategory.TransactionCategoryId,
+                    TransactionCategoryId = _selectedTransactionCategory.TransactionCategoryId,
                     TransactionDate = dateTime,
                     Sum = amount
                 };
@@ -64,6 +66,7 @@ namespace BudgetManager
                 cmbCategory.SelectedItem = null;
                 txtAmount.Text = string.Empty;
                 cmbCategory.IsEnabled = false;
+                btnSave_ClickHandler(sender, e);
             }
             else MessageBox.Show("Incorrect input!");
            
@@ -87,7 +90,7 @@ namespace BudgetManager
         private void cmbCategory_DropDownClosed(object sender, EventArgs e)
         {
             if (cmbCategory.SelectedIndex > -1)
-                SelectedTransactionCategory = _transactionCategoryManager.SelectTransactionCategoryrByName(cmbCategory.SelectedItem.ToString());
+                _selectedTransactionCategory = _transactionCategoryManager.SelectTransactionCategoryrByName(cmbCategory.SelectedItem.ToString());
          
         }
             

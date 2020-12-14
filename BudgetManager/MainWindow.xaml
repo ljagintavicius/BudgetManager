@@ -7,20 +7,12 @@
         mc:Ignorable="d"
         Title="Budget manager" Height="480" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="480"></RowDefinition>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="650"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <local:MenuUserControl x:Name="MenuUserControl" Grid.Row="0" Grid.Column="0"></local:MenuUserControl>
-        <DataGrid x:Name="dgBudget" Grid.Row="0" Grid.Column="1" Margin="9.6,0,31,56">
-            <DataGrid.Columns>
-
-            </DataGrid.Columns>
-        </DataGrid>
-        <local:AddExpenseIncomeUserControl x:Name="AddExpenseIncomeUserControl" Grid.Row="0" Grid.Column="1"></local:AddExpenseIncomeUserControl>
-        <local:ShowSummaryUserControl x:Name="ShowSummaryUserControl" Grid.Row="0" Grid.Column="1"></local:ShowSummaryUserControl>
+        <local:MenuUserControl x:Name="MenuUserControl" Grid.Column="0"></local:MenuUserControl>
+        <local:BudgetEntriesUserControl x:Name="BudgetEntriesUserControl" Grid.Column="1"></local:BudgetEntriesUserControl>
+        <local:ShowSummaryUserControl x:Name="ShowSummaryUserControl" Grid.Column="1"></local:ShowSummaryUserControl>
     </Grid>
 </Window>

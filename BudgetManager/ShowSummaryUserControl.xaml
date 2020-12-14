@@ -28,8 +28,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBlock x:Name="txtBalanceText" HorizontalAlignment="Left" Margin="34,211.2,0,-130.4" Grid.Row="1" FontWeight="Bold" FontSize="15" Text="Selected month balance" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txtTotalBalance" HorizontalAlignment="Left" Margin="214,211.2,0,-130.4" Grid.Row="1" FontWeight="Bold" FontSize="15" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtBalanceText" HorizontalAlignment="Left" Margin="34,211.2,0,-130.4" Grid.Row="1" FontWeight="Bold" FontSize="15" Text="Selected month's balance" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtTotalBalance" HorizontalAlignment="Left" Margin="221,211.2,0,-130.4" Grid.Row="1" FontWeight="Bold" FontSize="15" VerticalAlignment="Top"/>
         <ListView x:Name="lvExpenseCategories"  HorizontalAlignment="Left" Height="171" Margin="353,10.2,0,-80.4" Grid.Row="1" VerticalAlignment="Top" Width="190">
             <ListView.View>
                 <GridView>

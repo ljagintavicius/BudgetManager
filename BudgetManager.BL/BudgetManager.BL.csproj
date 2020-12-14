@@ -58,13 +58,12 @@
     <Compile Include="Models\TransactionCategoryViewModel.cs" />
     <Compile Include="Models\UserTransactionsViewModel.cs" />
     <Compile Include="Services\TransactionCategoryManager.cs" />
-    <Compile Include="Services\TransactionCategoryViewModelManager.cs" />
     <Compile Include="Services\TransactionManager.cs" />
     <Compile Include="Services\TransactionViewModelManager.cs" />
     <Compile Include="Services\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\TransactionViewModel.cs" />
-    <Compile Include="Services\UserTransactionsViewModelManager.cs" />
+    <Compile Include="Services\SummaryViewModelManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

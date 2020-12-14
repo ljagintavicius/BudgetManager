@@ -68,7 +68,10 @@
     <Compile Include="ShowSummaryUserControl.xaml.cs">
       <DependentUpon>ShowSummaryUserControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddExpenseIncomeUserControl.xaml">
+    <Compile Include="BudgetEntriesUserControl.xaml.cs">
+      <DependentUpon>BudgetEntriesUserControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddEntryUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -80,8 +83,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddExpenseIncomeUserControl.xaml.cs">
-      <DependentUpon>AddExpenseIncomeUserControl.xaml</DependentUpon>
+    <Compile Include="AddEntryUserControl.xaml.cs">
+      <DependentUpon>AddEntryUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -99,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowSummaryUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BudgetEntriesUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
