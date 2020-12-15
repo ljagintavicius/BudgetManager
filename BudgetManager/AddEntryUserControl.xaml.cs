@@ -5,17 +5,8 @@ using BudgetManager.DL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BudgetManager
 {
@@ -25,6 +16,7 @@ namespace BudgetManager
     public partial class AddEntryUserControl : UserControl
     {
         public event RoutedEventHandler btnSave_ClickHandler;
+        public event RoutedEventHandler btnCancel_ClickHandler;
         private DateTime _selectedDateTime;
         private List<TransactionCategory> _transactionCategories;
         private readonly ICRUDRepository<Transaction> _transactionManager;
@@ -37,7 +29,6 @@ namespace BudgetManager
         public AddEntryUserControl()
         {
             InitializeComponent();
-            
             _selectedDateTime = DateTime.Now;
             txtDate.Text = _selectedDateTime.ToString("yyyy-MM-dd");
             cmbCategory.IsEnabled = false;
@@ -69,9 +60,9 @@ namespace BudgetManager
                 btnSave_ClickHandler(sender, e);
             }
             else MessageBox.Show("Incorrect input!");
-           
+
         }
-        
+
         private void cmbExpenseOrIncome_DropDownClosed(object sender, EventArgs e)
         {
             _transactionCategories = _transactionCategoryManager.GetAll();
@@ -84,15 +75,19 @@ namespace BudgetManager
             {
                 cmbCategory.ItemsSource = _transactionCategories.Where(z => z.TransactionType == ETransactionType.Income).Select(z => z.TransactionCategoryName);
             }
-            
+
         }
-            
+
         private void cmbCategory_DropDownClosed(object sender, EventArgs e)
         {
-            if (cmbCategory.SelectedIndex > -1)
-                _selectedTransactionCategory = _transactionCategoryManager.SelectTransactionCategoryrByName(cmbCategory.SelectedItem.ToString());
-         
+            if (cmbCategory.SelectedItem != null)
+                _selectedTransactionCategory = _transactionCategoryManager.SelectTransactionCategoryByName(cmbCategory.SelectedItem.ToString());
+
         }
-            
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            btnCancel_ClickHandler(sender, e);
         }
+    }
 }

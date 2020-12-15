@@ -25,8 +25,6 @@ namespace BudgetManager
             BudgetEntriesUserControl.SelectedUser = MenuUserControl.SelectedUser;
             BudgetEntriesUserControl.Visibility = Visibility.Visible;
             ShowSummaryUserControl.Visibility = Visibility.Hidden;
-
-
         }
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {

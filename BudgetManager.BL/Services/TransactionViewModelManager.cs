@@ -17,11 +17,11 @@ namespace BudgetManager.BL.Services
         {
             _transactionViewModels = new List<TransactionViewModel>();
             _transactionManager = new TransactionManager();
-            SetValues();
         }
 
-        private void SetValues()
+        public List<TransactionViewModel> GetAll()
         {
+            _transactionViewModels = new List<TransactionViewModel>();
             List<Transaction> _transactions = _transactionManager.GetAll();
             foreach (var transaction in _transactions)
             {
@@ -34,13 +34,8 @@ namespace BudgetManager.BL.Services
                 viewModel.Amount = transaction.Sum;
                 _transactionViewModels.Add(viewModel);
             }
+            return _transactionViewModels.OrderBy(z => z.DateTime).ToList();
         }
 
-        public List<TransactionViewModel> GetAllOrUpdate()
-        {
-            _transactionViewModels = new List<TransactionViewModel>();
-            SetValues();
-            return _transactionViewModels;
-        }
     }
 }

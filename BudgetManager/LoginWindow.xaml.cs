@@ -21,44 +21,70 @@ namespace BudgetManager
         {
             InitializeComponent();
             _userManager = new UserManager();
+            rbSelectUser.IsChecked = true;
         }
 
 
 
         private void btnNewUserCreate_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtNewUser.Text))
+            if (!string.IsNullOrWhiteSpace(txtNewUser.Text) && txtNewUser.Text.Length < 20)
             {
                 _userManager.Add(new User { Name = txtNewUser.Text });
                 MessageBox.Show($"User {txtNewUser.Text} created");
             }
-            else
-            {
-                MessageBox.Show("Wrong input!");
-            }
+            else if (txtNewUser.Text.Length >= 20) MessageBox.Show("User name can't be longer than 20 characters!");
+            else MessageBox.Show("User name can't be empty!");
+
 
             txtNewUser.Text = string.Empty;
         }
 
 
-        private void cmbUserList_DropDown(object sender, EventArgs e)
+        private void cmbSelectUser_Dropdown(object sender, EventArgs e)
         {
             _usersList = _userManager.GetAll();
-            cmbUserList.ItemsSource = _usersList.Select(z => z.Name);
+            cmbSelectUser.ItemsSource = _usersList.Select(z => z.Name);
         }
 
         private void btnLoginWindowLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbUserList.SelectedIndex > -1)
+            if (cmbSelectUser.SelectedItem != null)
             {
-                SelectedUser = _userManager.SelectUserByName(cmbUserList.SelectedItem.ToString());
+                SelectedUser = _userManager.SelectUserByName(cmbSelectUser.SelectedItem.ToString());
                 btnLoginWindowLogin_ClickHandler(sender, e);
             }
             else
             {
                 MessageBox.Show("User was not selected!");
             }
-            cmbUserList.SelectedItem = null;
+            cmbSelectUser.SelectedItem = null;
+        }
+
+
+        private void loginWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
+
+        private void rbSelectUser_Checked(object sender, RoutedEventArgs e)
+        {
+            txtSelectUser.Visibility = Visibility.Visible;
+            cmbSelectUser.Visibility = Visibility.Visible;
+            btnLoginWindowLogin.Visibility = Visibility.Visible;
+            txtCreateUser.Visibility = Visibility.Hidden;
+            spCreateUser.Visibility = Visibility.Hidden;
+
+        }
+
+        private void rbCreateUser_Checked(object sender, RoutedEventArgs e)
+        {
+            txtSelectUser.Visibility = Visibility.Hidden;
+            cmbSelectUser.Visibility = Visibility.Hidden;
+            btnLoginWindowLogin.Visibility = Visibility.Hidden;
+            txtCreateUser.Visibility = Visibility.Visible;
+            spCreateUser.Visibility = Visibility.Visible;
         }
     }
 

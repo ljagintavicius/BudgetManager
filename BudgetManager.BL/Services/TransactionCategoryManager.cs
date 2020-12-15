@@ -59,7 +59,7 @@ namespace BudgetManager.BL.Services
                 context.SaveChanges();
             }
         }
-        public TransactionCategory SelectTransactionCategoryrByName(string transactionCategoryName)
+        public TransactionCategory SelectTransactionCategoryByName(string transactionCategoryName)
         {
             TransactionCategory transactionCategory;
             using (var context = new BudgetContext())

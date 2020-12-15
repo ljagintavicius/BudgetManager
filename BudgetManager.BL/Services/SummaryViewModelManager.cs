@@ -30,7 +30,6 @@ namespace BudgetManager.BL.Services
             _transactionCategories = _transactionCategoryManager.GetAll();
             Transactions = _transactionManager.GetAll();
             Balance = 0;
-            //SetValues();
         }
         public void SetValues()
         {

@@ -36,7 +36,7 @@ namespace BudgetManager.BL.Services
             Transaction entity;
             using (var context = new BudgetContext())
             {
-                entity = context.Transactions.Where(z => z.TransactionId == key).FirstOrDefault();
+                entity = context.Transactions.Where(z => z.TransactionId == key).Include(z=>z.TransactionCategory).FirstOrDefault();
             }
             return entity;
         }
@@ -55,7 +55,9 @@ namespace BudgetManager.BL.Services
         {
             using (var context = new BudgetContext())
             {
-                context.Entry(entity).State = EntityState.Modified;
+                Transaction oldEntity = context.Transactions.Find(entity.TransactionId);
+                if (oldEntity == null) return;
+                context.Entry(oldEntity).CurrentValues.SetValues(entity);
                 context.SaveChanges();
             }
         }

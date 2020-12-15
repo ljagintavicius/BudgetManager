@@ -1,10 +1,9 @@
 ﻿using BudgetManager.BL;
 using BudgetManager.BL.Services;
-using System.Collections.Generic;
-using System.Windows.Controls;
-using System.Windows;
 using BudgetManager.DL;
-using System.Linq;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace BudgetManager
 {
@@ -13,43 +12,61 @@ namespace BudgetManager
     /// </summary>
     public partial class BudgetEntriesUserControl : UserControl
     {
-        public event RoutedEventHandler btnAdd_ClickHandler;
         private List<TransactionViewModel> _transactionViewModels;
         private ITransactionViewModelManager _transactionViewModelManager;
+        private TransactionManager _transactionManager;
         public User SelectedUser { get; set; }
         public BudgetEntriesUserControl()
         {
             InitializeComponent();
-            AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
-            AddExpenseIncomeUserControl.btnSave_ClickHandler += ShowDataGrid;
-            
+            AddEntryUserControl.Visibility = Visibility.Hidden;
+            _transactionManager = new TransactionManager();
+            AddEntryUserControl.btnSave_ClickHandler += ShowDataGrid;
+            AddEntryUserControl.btnCancel_ClickHandler += ShowDataGrid;
+            EditDeleteUserControl.btnSaveChanges_ClickHandler += ShowDataGrid;
+            EditDeleteUserControl.btnDelete_ClickHandler += ShowDataGrid;
+            EditDeleteUserControl.btnCancel_ClickHandler += ShowDataGrid;
+
         }
 
         public void ShowDataGrid(object sender, RoutedEventArgs e)
         {
             _transactionViewModelManager = new TransactionViewModelManager();
-            _transactionViewModels = _transactionViewModelManager.GetAllOrUpdate();
+            _transactionViewModels = _transactionViewModelManager.GetAll();
             dgBudget.ItemsSource = _transactionViewModels;
-            AddExpenseIncomeUserControl.Visibility = Visibility.Hidden;
-            dgBudget.ScrollIntoView(dgBudget.Items.GetItemAt(dgBudget.Items.Count-1));
-            
+            AddEntryUserControl.Visibility = Visibility.Hidden;
+            EditDeleteUserControl.Visibility = Visibility.Hidden;
+            txtEditDeleteMessage.Visibility = Visibility.Hidden;
+            spButtonsPanel.Visibility = Visibility.Visible;
+            if(dgBudget.Items.Count > 0) dgBudget.ScrollIntoView(dgBudget.Items.GetItemAt(dgBudget.Items.Count-1));
+
+
         }
 
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddExpenseIncomeUserControl.Visibility = Visibility.Visible;
-            AddExpenseIncomeUserControl.SelectedUser = this.SelectedUser;
+            AddEntryUserControl.Visibility = Visibility.Visible;
+            EditDeleteUserControl.Visibility = Visibility.Hidden;
+            AddEntryUserControl.SelectedUser = this.SelectedUser;
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        private void btnEditDelete_Click(object sender, RoutedEventArgs e)
         {
 
+            AddEntryUserControl.Visibility = Visibility.Hidden;
+            EditDeleteUserControl.Visibility = Visibility.Visible;
+            spButtonsPanel.Visibility = Visibility.Hidden;
+            txtEditDeleteMessage.Visibility = Visibility.Visible;
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void dgBudget_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (dgBudget.SelectedItem != null)
+            {
+                EditDeleteUserControl.SelectedTransaction = _transactionManager.Get(((TransactionViewModel)dgBudget.SelectedItem).TransactionId);
+                EditDeleteUserControl.SetValues();
+            }
         }
     }
 }

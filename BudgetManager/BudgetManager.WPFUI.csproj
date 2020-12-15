@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EditDeleteUserControl.xaml.cs">
+      <DependentUpon>EditDeleteUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShowSummaryUserControl.xaml.cs">
       <DependentUpon>ShowSummaryUserControl.xaml</DependentUpon>
     </Compile>
@@ -72,6 +75,10 @@
       <DependentUpon>BudgetEntriesUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="AddEntryUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditDeleteUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -38,7 +38,11 @@ namespace BudgetManager
 
         private void cmbSelectedYearAndMonth_DropDownClosed(object sender, EventArgs e)
         {
-            
+            ShowSummary();
+        }
+
+        public void ShowSummary()
+        {
             if (cmbSelectedYearAndMonth.SelectedItem != null)
             {
                 _summaryViewModelManager.StartTime = DateTime.Parse((string)cmbSelectedYearAndMonth.SelectedItem);
@@ -50,7 +54,6 @@ namespace BudgetManager
                 lvExpenseCategories.ItemsSource = _summaryViewModelManager.ExpensesByCategory;
                 lvIncomeCategories.ItemsSource = _summaryViewModelManager.IncomesByCategory;
             }
-
         }
         private void ShowTables()
         {

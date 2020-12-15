@@ -8,9 +8,8 @@
              d:DesignHeight="450" d:DesignWidth="150">
     <StackPanel Orientation="Vertical">
         <TextBlock x:Name="txtLoggedAs" HorizontalAlignment="Center" Height="10" Margin="5 5 5 0" FontSize="8"></TextBlock>
-        <Button x:Name="btnLogin" Height="40" Margin="10 10 10 10" Content="Login" FontSize="13" Click="btnLogin_Click"></Button>
+        <Button x:Name="btnLoginLogout" Height="40" Margin="10 10 10 10" Content="Log in" FontSize="13" Click="btnLoginLogout_Click"></Button>
         <Button x:Name="btnBudgetEntries" Height="40" Margin="10 10 10 10" Content="Budget entries" FontSize="13" Click="btnBudgetEntries_Click"></Button>
         <Button x:Name="btnShowSummary" Height="40" Margin="10 10 10 10" Content="Show summary" FontSize="13" Click="btnShowSummary_Click"></Button>
-        <Button x:Name="btnLogOut" Height="40" Margin="10 10 10 10" Content="Log out" FontSize="13" Click="btnLogOut_Click"></Button>
     </StackPanel>
 </UserControl>
