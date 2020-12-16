@@ -16,7 +16,6 @@ namespace BudgetManager
     {
         private List<TransactionCategory> _transactionCategories;
         private ITransactionCategoryManager _transactionCategoryManager;
-        private TransactionCategory _selectedTransactionCategory;
         private Transaction _transaction;
         private ICRUDRepository<Transaction> _transactionManager;
 
@@ -42,16 +41,6 @@ namespace BudgetManager
             cmbExpenseOrIncome.SelectedItem = Enum.GetName(typeof(ETransactionType), SelectedTransaction.TransactionCategory.TransactionType);
             cmbCategory.SelectedItem = SelectedTransaction.TransactionCategory.TransactionCategoryName;
             txtAmount.Text = SelectedTransaction.Sum.ToString();
-        }
-
-
-
-
-        private void cmbExpenseOrIncome_DropDownClosed(object sender, EventArgs e)
-        {
-            if (cmbCategory.SelectedItem != null)
-                _selectedTransactionCategory = _transactionCategoryManager.GetByName(cmbCategory.SelectedItem.ToString());
-
         }
 
         private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
@@ -84,7 +73,6 @@ namespace BudgetManager
             else if (amount <= 0) MessageBox.Show("Amount must be greater than 0!");
             else MessageBox.Show("Incorrect input!");
         }
-
 
         private void cmbExpenseOrIncome_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

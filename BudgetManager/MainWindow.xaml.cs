@@ -1,5 +1,4 @@
-﻿using BudgetManager.DL;
-using System.Windows;
+﻿using System.Windows;
 
 namespace BudgetManager
 {
@@ -8,7 +7,6 @@ namespace BudgetManager
     /// </summary>
     public partial class MainWindow : Window
     {
-        public User SelectedUser { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +30,7 @@ namespace BudgetManager
             ShowSummaryUserControl.Visibility = Visibility.Hidden;
             BudgetEntriesUserControl.Visibility = Visibility.Hidden;
             ShowSummaryUserControl.HideTables();
+            MenuUserControl.SelectedUser = null;
         }
 
         private void btnShowSummary_Click(object sender, RoutedEventArgs e)

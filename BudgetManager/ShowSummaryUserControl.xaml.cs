@@ -15,7 +15,7 @@ namespace BudgetManager
     {
         const int oneMonth = 1;
         private List<Transaction> _transactions;
-        private SummaryViewModelManager _summaryViewModelManager;
+        private ISummaryViewModelManager _summaryViewModelManager;
 
         public ShowSummaryUserControl()
         {

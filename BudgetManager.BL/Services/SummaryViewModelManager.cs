@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace BudgetManager.BL.Services
 {
-    public class SummaryViewModelManager
+    public class SummaryViewModelManager : ISummaryViewModelManager
     {
         private readonly List<User> _users;
         private readonly List<TransactionCategory> _transactionCategories;

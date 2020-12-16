@@ -20,7 +20,6 @@ namespace BudgetManager
         private List<TransactionCategory> _transactionCategories;
         private readonly ICRUDRepository<Transaction> _transactionManager;
         private readonly ITransactionCategoryManager _transactionCategoryManager;
-        private Transaction _transaction;
         private TransactionCategory _selectedTransactionCategory;
 
         public User SelectedUser { get; set; }
@@ -44,14 +43,14 @@ namespace BudgetManager
                 amount > 0
                 )
             {
-                _transaction = new Transaction
+                Transaction newTransaction = new Transaction
                 {
                     UserId = SelectedUser.UserId,
                     TransactionCategoryId = _selectedTransactionCategory.TransactionCategoryId,
                     TransactionDate = dpDate.SelectedDate.Value,
                     Sum = amount
                 };
-                _transactionManager.Add(_transaction);
+                _transactionManager.Add(newTransaction);
                 MessageBox.Show("Entry saved!");
                 cmbExpenseOrIncome.SelectedItem = null;
                 cmbCategory.SelectedItem = null;
@@ -78,7 +77,6 @@ namespace BudgetManager
             {
                 cmbCategory.ItemsSource = _transactionCategories.Where(z => z.TransactionType == ETransactionType.Income).Select(z => z.TransactionCategoryName);
             }
-
         }
 
         private void cmbCategory_DropDownClosed(object sender, EventArgs e)
