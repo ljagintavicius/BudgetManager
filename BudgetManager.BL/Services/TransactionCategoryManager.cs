@@ -46,7 +46,7 @@ namespace BudgetManager.BL.Services
             List<TransactionCategory> entityList;
             using (var context = new BudgetContext())
             {
-                entityList = context.TransactionCategories.Include(z=>z.Transactions).ToList();
+                entityList = context.TransactionCategories.Include(z => z.Transactions).ToList();
             }
             return entityList;
         }
@@ -59,7 +59,7 @@ namespace BudgetManager.BL.Services
                 context.SaveChanges();
             }
         }
-        public TransactionCategory SelectTransactionCategoryByName(string transactionCategoryName)
+        public TransactionCategory GetByName(string transactionCategoryName)
         {
             TransactionCategory transactionCategory;
             using (var context = new BudgetContext())

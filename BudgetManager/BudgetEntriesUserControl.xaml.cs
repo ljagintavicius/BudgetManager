@@ -38,7 +38,7 @@ namespace BudgetManager
             EditDeleteUserControl.Visibility = Visibility.Hidden;
             txtEditDeleteMessage.Visibility = Visibility.Hidden;
             spButtonsPanel.Visibility = Visibility.Visible;
-            if(dgBudget.Items.Count > 0) dgBudget.ScrollIntoView(dgBudget.Items.GetItemAt(dgBudget.Items.Count-1));
+            if (dgBudget.Items.Count > 0) dgBudget.ScrollIntoView(dgBudget.Items.GetItemAt(dgBudget.Items.Count - 1));
 
 
         }

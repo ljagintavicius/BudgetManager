@@ -51,7 +51,7 @@ namespace BudgetManager
         {
             if (cmbSelectUser.SelectedItem != null)
             {
-                SelectedUser = _userManager.SelectUserByName(cmbSelectUser.SelectedItem.ToString());
+                SelectedUser = _userManager.GetByName(cmbSelectUser.SelectedItem.ToString());
                 btnLoginWindowLogin_ClickHandler(sender, e);
             }
             else

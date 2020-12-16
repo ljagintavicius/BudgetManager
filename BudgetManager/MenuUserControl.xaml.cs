@@ -68,7 +68,7 @@ namespace BudgetManager
         private void btnShowSummary_Click(object sender, RoutedEventArgs e)
         {
             btnShowSummary_ClickHandler(sender, e);
-            
+
         }
     }
 }

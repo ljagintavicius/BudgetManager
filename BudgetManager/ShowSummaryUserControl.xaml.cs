@@ -1,5 +1,4 @@
-﻿using BudgetManager.BL;
-using BudgetManager.BL.Services;
+﻿using BudgetManager.BL.Services;
 using BudgetManager.DL.Models;
 using System;
 using System.Collections.Generic;
@@ -64,13 +63,14 @@ namespace BudgetManager
             lvIncomeCategories.Visibility = Visibility.Visible;
         }
 
-        private void HideTables()
+        public void HideTables()
         {
             txtTotalBalance.Visibility = Visibility.Hidden;
             txtBalanceText.Visibility = Visibility.Hidden;
             lvUsersInfo.Visibility = Visibility.Hidden;
             lvExpenseCategories.Visibility = Visibility.Hidden;
             lvIncomeCategories.Visibility = Visibility.Hidden;
+            cmbSelectedYearAndMonth.SelectedItem = null;
         }
     }
 }

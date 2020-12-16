@@ -2,15 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BudgetManager.BL.Services
 {
     public class TransactionViewModelManager : ITransactionViewModelManager
     {
-        private ICRUDRepository<Transaction> _transactionManager;
-        private List<TransactionViewModel> _transactionViewModels;
+        private readonly ICRUDRepository<Transaction> _transactionManager;
+        private readonly List<TransactionViewModel> _transactionViewModels;
 
 
         public TransactionViewModelManager()
@@ -21,7 +19,6 @@ namespace BudgetManager.BL.Services
 
         public List<TransactionViewModel> GetAll()
         {
-            _transactionViewModels = new List<TransactionViewModel>();
             List<Transaction> _transactions = _transactionManager.GetAll();
             foreach (var transaction in _transactions)
             {

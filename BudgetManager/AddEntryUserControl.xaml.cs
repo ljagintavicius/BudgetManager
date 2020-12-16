@@ -59,8 +59,8 @@ namespace BudgetManager
                 cmbCategory.IsEnabled = false;
                 btnSave_ClickHandler(sender, e);
             }
-            else MessageBox.Show("Incorrect input!");
 
+            else MessageBox.Show("Incorrect input!");
         }
 
         private void cmbExpenseOrIncome_DropDownClosed(object sender, EventArgs e)
@@ -81,7 +81,7 @@ namespace BudgetManager
         private void cmbCategory_DropDownClosed(object sender, EventArgs e)
         {
             if (cmbCategory.SelectedItem != null)
-                _selectedTransactionCategory = _transactionCategoryManager.SelectTransactionCategoryByName(cmbCategory.SelectedItem.ToString());
+                _selectedTransactionCategory = _transactionCategoryManager.GetByName(cmbCategory.SelectedItem.ToString());
 
         }
 

@@ -4,6 +4,6 @@ namespace BudgetManager.BL
 {
     public interface IUserManager : ICRUDRepository<User>
     {
-        User SelectUserByName(string userName);
+        User GetByName(string userName);
     }
 }

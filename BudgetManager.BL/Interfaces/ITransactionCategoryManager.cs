@@ -4,6 +4,6 @@ namespace BudgetManager.BL.Services
 {
     public interface ITransactionCategoryManager : ICRUDRepository<TransactionCategory>
     {
-        TransactionCategory SelectTransactionCategoryByName(string transactionCategoryName);
+        TransactionCategory GetByName(string transactionCategoryName);
     }
 }

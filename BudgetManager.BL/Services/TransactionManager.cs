@@ -36,7 +36,7 @@ namespace BudgetManager.BL.Services
             Transaction entity;
             using (var context = new BudgetContext())
             {
-                entity = context.Transactions.Where(z => z.TransactionId == key).Include(z=>z.TransactionCategory).FirstOrDefault();
+                entity = context.Transactions.Where(z => z.TransactionId == key).Include(z => z.TransactionCategory).FirstOrDefault();
             }
             return entity;
         }
@@ -46,7 +46,7 @@ namespace BudgetManager.BL.Services
             List<Transaction> entityList;
             using (var context = new BudgetContext())
             {
-                entityList = context.Transactions.Include(z=>z.TransactionCategory).Include(z=>z.User).ToList();
+                entityList = context.Transactions.Include(z => z.TransactionCategory).Include(z => z.User).ToList();
             }
             return entityList;
         }

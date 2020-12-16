@@ -49,8 +49,8 @@ namespace BudgetManager
 
         private void cmbExpenseOrIncome_DropDownClosed(object sender, EventArgs e)
         {
-            if (cmbCategory.SelectedIndex > -1)
-                _selectedTransactionCategory = _transactionCategoryManager.SelectTransactionCategoryByName(cmbCategory.SelectedItem.ToString());
+            if (cmbCategory.SelectedItem != null)
+                _selectedTransactionCategory = _transactionCategoryManager.GetByName(cmbCategory.SelectedItem.ToString());
 
         }
 
@@ -64,7 +64,7 @@ namespace BudgetManager
                 _transaction = new Transaction
                 {
                     TransactionId = SelectedTransaction.TransactionId,
-                    TransactionCategoryId = _transactionCategoryManager.SelectTransactionCategoryByName(cmbCategory.SelectedItem.ToString()).TransactionCategoryId,
+                    TransactionCategoryId = _transactionCategoryManager.GetByName(cmbCategory.SelectedItem.ToString()).TransactionCategoryId,
                     UserId = SelectedTransaction.UserId,
                     TransactionDate = dateTime,
                     Sum = amount
@@ -100,7 +100,7 @@ namespace BudgetManager
                 _transactionManager.Delete(SelectedTransaction.TransactionId);
                 btnDelete_ClickHandler(sender, e);
             }
-            
+
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

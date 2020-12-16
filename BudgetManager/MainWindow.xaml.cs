@@ -25,11 +25,13 @@ namespace BudgetManager
             BudgetEntriesUserControl.SelectedUser = MenuUserControl.SelectedUser;
             BudgetEntriesUserControl.Visibility = Visibility.Visible;
             ShowSummaryUserControl.Visibility = Visibility.Hidden;
+            ShowSummaryUserControl.HideTables();
         }
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
             ShowSummaryUserControl.Visibility = Visibility.Hidden;
             BudgetEntriesUserControl.Visibility = Visibility.Hidden;
+            ShowSummaryUserControl.HideTables();
         }
 
         private void btnShowSummary_Click(object sender, RoutedEventArgs e)

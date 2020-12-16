@@ -4,8 +4,6 @@ using BudgetManager.DL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BudgetManager.BL.Services
 {
@@ -34,9 +32,9 @@ namespace BudgetManager.BL.Services
         public void SetValues()
         {
             Dictionary<string, UserTransactionsViewModel> usersTransactions = new Dictionary<string, UserTransactionsViewModel>();
-            foreach (var user in _users.Select(z=>z.Name))
+            foreach (var user in _users.Select(z => z.Name))
             {
-                usersTransactions.Add(user, new UserTransactionsViewModel {UserName = user, Expenses = 0, Income = 0});
+                usersTransactions.Add(user, new UserTransactionsViewModel { UserName = user, Expenses = 0, Income = 0 });
             }
             Dictionary<string, TransactionCategoryViewModel> expenseCategories = new Dictionary<string, TransactionCategoryViewModel>();
             Dictionary<string, TransactionCategoryViewModel> incomeCategories = new Dictionary<string, TransactionCategoryViewModel>();
@@ -46,15 +44,19 @@ namespace BudgetManager.BL.Services
                 {
                     expenseCategories.Add(transactionCategory.TransactionCategoryName,
                                           new TransactionCategoryViewModel
-                                          { TransactionCategoryName= transactionCategory.TransactionCategoryName,
-                                            Amount = 0});
+                                          {
+                                              TransactionCategoryName = transactionCategory.TransactionCategoryName,
+                                              Amount = 0
+                                          });
                 }
                 else
                 {
                     incomeCategories.Add(transactionCategory.TransactionCategoryName,
                                           new TransactionCategoryViewModel
-                                          { TransactionCategoryName = transactionCategory.TransactionCategoryName,
-                                            Amount = 0 }
+                                          {
+                                              TransactionCategoryName = transactionCategory.TransactionCategoryName,
+                                              Amount = 0
+                                          }
                                           );
                 }
             }

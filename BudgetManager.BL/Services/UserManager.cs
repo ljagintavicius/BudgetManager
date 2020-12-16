@@ -45,7 +45,7 @@ namespace BudgetManager.BL
             List<User> entityList;
             using (var context = new BudgetContext())
             {
-                entityList = context.Users.Include(z=>z.Transactions.Select(x=>x.TransactionCategory)).ToList();
+                entityList = context.Users.Include(z => z.Transactions.Select(x => x.TransactionCategory)).ToList();
             }
             return entityList;
         }
@@ -59,7 +59,7 @@ namespace BudgetManager.BL
             }
         }
 
-        public User SelectUserByName(string userName)
+        public User GetByName(string userName)
         {
             User user;
             using (var context = new BudgetContext())
