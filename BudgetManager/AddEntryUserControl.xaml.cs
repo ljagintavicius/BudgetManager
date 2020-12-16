@@ -40,7 +40,9 @@ namespace BudgetManager
             if (dpDate.SelectedDate.HasValue &&
                 cmbExpenseOrIncome.SelectedItem != null &&
                 cmbCategory.SelectedItem != null &&
-                decimal.TryParse(txtAmount.Text, out decimal amount))
+                decimal.TryParse(txtAmount.Text, out decimal amount) &&
+                amount > 0
+                )
             {
                 _transaction = new Transaction
                 {
@@ -57,7 +59,10 @@ namespace BudgetManager
                 cmbCategory.IsEnabled = false;
                 btnSave_ClickHandler(sender, e);
             }
-
+            else if (cmbExpenseOrIncome.SelectedItem == null) MessageBox.Show("Expense/Income was not selected!");
+            else if (cmbCategory.SelectedItem == null) MessageBox.Show("Category was not selected!");
+            else if (!decimal.TryParse(txtAmount.Text, out amount)) MessageBox.Show("Amount must be decimal number!");
+            else if (amount <= 0) MessageBox.Show("Amount must be greater than 0!");
             else MessageBox.Show("Incorrect input!");
         }
 

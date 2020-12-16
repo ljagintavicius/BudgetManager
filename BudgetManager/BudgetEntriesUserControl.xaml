@@ -12,9 +12,13 @@
             <RowDefinition Height="250"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dgBudget" Grid.Row="1" Margin="10 10 10 10" IsReadOnly="True" SelectionChanged="dgBudget_SelectionChanged">
+        <DataGrid x:Name="dgBudget" Grid.Row="1" IsReadOnly="True" Width="500" SelectionChanged="dgBudget_SelectionChanged" SelectionMode="Single" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False">
             <DataGrid.Columns>
-
+                <DataGridTextColumn Width="80" Header="Date" Binding="{Binding DateTime}"></DataGridTextColumn>
+                <DataGridTextColumn Width="80" Header="User name" Binding="{Binding UserName}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Expense/Income" Binding="{Binding TransactionType}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Category" Binding="{Binding TransactionCategory}"></DataGridTextColumn>
+                <DataGridTextColumn Width="85" Header="Amount, Eur" Binding="{Binding Amount}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel x:Name="spButtonsPanel" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
