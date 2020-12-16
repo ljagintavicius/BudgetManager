@@ -8,17 +8,14 @@ namespace BudgetManager.BL.Services
     public class TransactionViewModelManager : ITransactionViewModelManager
     {
         private readonly ICRUDRepository<Transaction> _transactionManager;
-        private readonly List<TransactionViewModel> _transactionViewModels;
-
-
         public TransactionViewModelManager()
         {
-            _transactionViewModels = new List<TransactionViewModel>();
             _transactionManager = new TransactionManager();
         }
 
         public List<TransactionViewModel> GetAll()
         {
+            List<TransactionViewModel> _transactionViewModels = new List<TransactionViewModel>();
             List<Transaction> _transactions = _transactionManager.GetAll();
             foreach (var transaction in _transactions)
             {

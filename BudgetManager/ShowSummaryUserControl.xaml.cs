@@ -47,7 +47,7 @@ namespace BudgetManager
                 _summaryViewModelManager.StartTime = DateTime.Parse((string)cmbSelectedYearAndMonth.SelectedItem);
                 _summaryViewModelManager.EndTime = DateTime.Parse((string)cmbSelectedYearAndMonth.SelectedItem).AddMonths(oneMonth);
                 ShowTables();
-                _summaryViewModelManager.SetValues();
+                _summaryViewModelManager.PrepareSummary();
                 lvUsersInfo.ItemsSource = _summaryViewModelManager.UsersExpensesIncomes;
                 txtTotalBalance.Text = $"{_summaryViewModelManager.Balance} Eur";
                 txtTotalExpenses.Text = $"{_summaryViewModelManager.TotalExpenses} Eur";

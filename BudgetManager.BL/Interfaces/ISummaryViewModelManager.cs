@@ -17,6 +17,6 @@ namespace BudgetManager.BL.Services
         List<Transaction> Transactions { get; set; }
         List<UserTransactionsViewModel> UsersExpensesIncomes { get; set; }
 
-        void SetValues();
+        void PrepareSummary();
     }
 }

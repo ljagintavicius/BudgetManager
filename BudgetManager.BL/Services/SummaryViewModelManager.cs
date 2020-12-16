@@ -9,8 +9,8 @@ namespace BudgetManager.BL.Services
 {
     public class SummaryViewModelManager : ISummaryViewModelManager
     {
-        private readonly List<User> _users;
-        private readonly List<TransactionCategory> _transactionCategories;
+        private readonly IUserManager _userManager;
+        private readonly ITransactionCategoryManager _transactionCategoryManager;
         public List<Transaction> Transactions { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
@@ -23,18 +23,18 @@ namespace BudgetManager.BL.Services
 
         public SummaryViewModelManager()
         {
-            IUserManager _userManager = new UserManager();
-            ITransactionCategoryManager _transactionCategoryManager = new TransactionCategoryManager();
+            _userManager = new UserManager();
+            _transactionCategoryManager = new TransactionCategoryManager();
             ICRUDRepository<Transaction> _transactionManager = new TransactionManager();
-            _users = _userManager.GetAll();
-            _transactionCategories = _transactionCategoryManager.GetAll();
             Transactions = _transactionManager.GetAll();
             Balance = 0;
             TotalIncome = 0;
             TotalExpenses = 0;
         }
-        public void SetValues()
+        public void PrepareSummary()
         {
+            List<TransactionCategory> _transactionCategories = _transactionCategoryManager.GetAll();
+            List<User> _users = _userManager.GetAll();
             Dictionary<string, UserTransactionsViewModel> usersTransactions = new Dictionary<string, UserTransactionsViewModel>();
             foreach (var user in _users.Select(z => z.Name))
             {
