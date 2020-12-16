@@ -50,14 +50,15 @@ namespace BudgetManager
                 _summaryViewModelManager.SetValues();
                 lvUsersInfo.ItemsSource = _summaryViewModelManager.UsersExpensesIncomes;
                 txtTotalBalance.Text = $"{_summaryViewModelManager.Balance} Eur";
+                txtTotalExpenses.Text = $"{_summaryViewModelManager.TotalExpenses} Eur";
+                txtTotalIncome.Text = $"{_summaryViewModelManager.TotalIncome} Eur";
                 lvExpenseCategories.ItemsSource = _summaryViewModelManager.ExpensesByCategory;
                 lvIncomeCategories.ItemsSource = _summaryViewModelManager.IncomesByCategory;
             }
         }
         private void ShowTables()
         {
-            txtTotalBalance.Visibility = Visibility.Visible;
-            txtBalanceText.Visibility = Visibility.Visible;
+            spInfo.Visibility = Visibility.Visible;
             lvUsersInfo.Visibility = Visibility.Visible;
             lvExpenseCategories.Visibility = Visibility.Visible;
             lvIncomeCategories.Visibility = Visibility.Visible;
@@ -65,8 +66,7 @@ namespace BudgetManager
 
         public void HideTables()
         {
-            txtTotalBalance.Visibility = Visibility.Hidden;
-            txtBalanceText.Visibility = Visibility.Hidden;
+            spInfo.Visibility = Visibility.Hidden;
             lvUsersInfo.Visibility = Visibility.Hidden;
             lvExpenseCategories.Visibility = Visibility.Hidden;
             lvIncomeCategories.Visibility = Visibility.Hidden;

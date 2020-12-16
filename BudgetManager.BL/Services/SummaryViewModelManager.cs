@@ -15,6 +15,8 @@ namespace BudgetManager.BL.Services
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public decimal Balance { get; set; }
+        public decimal TotalIncome { get; set; }
+        public decimal TotalExpenses { get; set; }
         public List<UserTransactionsViewModel> UsersExpensesIncomes { get; set; }
         public List<TransactionCategoryViewModel> IncomesByCategory { get; set; }
         public List<TransactionCategoryViewModel> ExpensesByCategory { get; set; }
@@ -28,6 +30,8 @@ namespace BudgetManager.BL.Services
             _transactionCategories = _transactionCategoryManager.GetAll();
             Transactions = _transactionManager.GetAll();
             Balance = 0;
+            TotalIncome = 0;
+            TotalExpenses = 0;
         }
         public void SetValues()
         {
@@ -67,15 +71,16 @@ namespace BudgetManager.BL.Services
                 {
                     usersTransactions[transaction.User.Name].Expenses += transaction.Sum;
                     expenseCategories[transaction.TransactionCategory.TransactionCategoryName].Amount += transaction.Sum;
-                    Balance -= transaction.Sum;
+                    TotalExpenses += transaction.Sum;
                 }
                 else
                 {
                     usersTransactions[transaction.User.Name].Income += transaction.Sum;
                     incomeCategories[transaction.TransactionCategory.TransactionCategoryName].Amount += transaction.Sum;
-                    Balance += transaction.Sum;
+                    TotalIncome += transaction.Sum;
                 }
             }
+            Balance = TotalIncome - TotalExpenses;
             UsersExpensesIncomes = usersTransactions.Values.ToList();
             IncomesByCategory = incomeCategories.Values.ToList();
             ExpensesByCategory = expenseCategories.Values.ToList();

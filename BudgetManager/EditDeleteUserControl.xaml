@@ -20,7 +20,7 @@
             <TextBlock Text="Amount, Eur" TextAlignment="Center" Height="20" Width="100" Margin="10 0 10 0"></TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <TextBox x:Name="txtDate" Height="20" Width="100" Margin="10 0 10 0"></TextBox>
+            <DatePicker x:Name="dpDate" Height="20" Width="100" Margin="10 0 10 0" Focusable="False"></DatePicker>
             <ComboBox x:Name="cmbExpenseOrIncome" Height="20" Width="100" Margin="10 0 10 0" SelectionChanged="cmbExpenseOrIncome_SelectionChanged"/>
             <ComboBox x:Name="cmbCategory" Height="20" Width="100" Margin="10 0 10 0"></ComboBox>
             <TextBox x:Name="txtAmount" Height="20" Width="100" Margin="10 0 10 0"></TextBox>

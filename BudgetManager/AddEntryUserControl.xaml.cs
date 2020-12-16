@@ -17,7 +17,6 @@ namespace BudgetManager
     {
         public event RoutedEventHandler btnSave_ClickHandler;
         public event RoutedEventHandler btnCancel_ClickHandler;
-        private DateTime _selectedDateTime;
         private List<TransactionCategory> _transactionCategories;
         private readonly ICRUDRepository<Transaction> _transactionManager;
         private readonly ITransactionCategoryManager _transactionCategoryManager;
@@ -29,8 +28,7 @@ namespace BudgetManager
         public AddEntryUserControl()
         {
             InitializeComponent();
-            _selectedDateTime = DateTime.Now;
-            txtDate.Text = _selectedDateTime.ToString("yyyy-MM-dd");
+            dpDate.SelectedDate = DateTime.Now;
             cmbCategory.IsEnabled = false;
             _transactionManager = new TransactionManager();
             _transactionCategoryManager = new TransactionCategoryManager();
@@ -39,7 +37,7 @@ namespace BudgetManager
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (DateTime.TryParse(txtDate.Text, out DateTime dateTime) &&
+            if (dpDate.SelectedDate.HasValue &&
                 cmbExpenseOrIncome.SelectedItem != null &&
                 cmbCategory.SelectedItem != null &&
                 decimal.TryParse(txtAmount.Text, out decimal amount))
@@ -48,7 +46,7 @@ namespace BudgetManager
                 {
                     UserId = SelectedUser.UserId,
                     TransactionCategoryId = _selectedTransactionCategory.TransactionCategoryId,
-                    TransactionDate = dateTime,
+                    TransactionDate = dpDate.SelectedDate.Value,
                     Sum = amount
                 };
                 _transactionManager.Add(_transaction);

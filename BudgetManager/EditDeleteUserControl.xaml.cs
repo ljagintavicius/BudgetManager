@@ -38,7 +38,7 @@ namespace BudgetManager
             _transactionCategories = _transactionCategoryManager.GetAll();
             cmbExpenseOrIncome.ItemsSource = Enum.GetNames(typeof(ETransactionType));
             cmbCategory.ItemsSource = _transactionCategories.Select(z => z.TransactionCategoryName).ToList();
-            txtDate.Text = SelectedTransaction.TransactionDate.ToString("yyyy-MM-dd");
+            dpDate.SelectedDate = SelectedTransaction.TransactionDate;
             cmbExpenseOrIncome.SelectedItem = Enum.GetName(typeof(ETransactionType), SelectedTransaction.TransactionCategory.TransactionType);
             cmbCategory.SelectedItem = SelectedTransaction.TransactionCategory.TransactionCategoryName;
             txtAmount.Text = SelectedTransaction.Sum.ToString();
@@ -56,7 +56,7 @@ namespace BudgetManager
 
         private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
         {
-            if (DateTime.TryParse(txtDate.Text, out DateTime dateTime) &&
+            if (dpDate.SelectedDate.HasValue &&
                 cmbExpenseOrIncome.SelectedItem != null &&
                 cmbCategory.SelectedItem != null &&
                 decimal.TryParse(txtAmount.Text, out decimal amount))
@@ -66,7 +66,7 @@ namespace BudgetManager
                     TransactionId = SelectedTransaction.TransactionId,
                     TransactionCategoryId = _transactionCategoryManager.GetByName(cmbCategory.SelectedItem.ToString()).TransactionCategoryId,
                     UserId = SelectedTransaction.UserId,
-                    TransactionDate = dateTime,
+                    TransactionDate = dpDate.SelectedDate.Value,
                     Sum = amount
                 };
                 _transactionManager.Update(_transaction);
